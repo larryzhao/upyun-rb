@@ -14,19 +14,17 @@ module Upyun
       end
     end
 
-    def exists?(path)
+    def head(path)
       uri = "/#{@bucket}/#{path}"
       date = Upyun::Util.current_date
       sign = Digest::MD5.hexdigest("HEAD&#{uri}&#{date}&0&#{@signed_password}")
 
-      resp = @connection.head do |req|
+      @connection.head do |req|
         req.url uri
         req.headers['Authorization'] = "UpYun #{@operator}:#{sign}"
         req.headers['Date'] = date
         req.headers['Expect'] = ''
       end
-
-      resp.status == 200
     end
 
     def put(path, file)
