@@ -30,7 +30,7 @@ module Upyun
     def put(path, file)
       uri = "/#{@bucket}/#{path}"
       date = Upyun::Util.current_date
-      mime_type = `file -Ib #{file}`.gsub(/\n/,"").split(';')[0]
+      mime_type = `file -b --mime #{file}`.gsub(/\n/,"").split(';')[0]
       file_size = file.nil? ? 0 : File.size(file) 
       sign = Digest::MD5.hexdigest("PUT&#{uri}&#{date}&#{file_size}&#{@signed_password}")
 
