@@ -1,0 +1,20 @@
+PATH
+  remote: .
+  specs:
+    upyun-rb (0.0.4)
+      faraday
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
+    multipart-post (1.2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  faraday
+  upyun-rb!
