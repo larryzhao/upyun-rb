@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    upyun-rb (0.0.4)
+    upyun-rb (0.0.8)
       faraday
 
 GEM
@@ -16,5 +16,4 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  faraday
   upyun-rb!
