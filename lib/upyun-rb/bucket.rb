@@ -15,13 +15,14 @@ module Upyun
     end
 
     def put(path, file)
+      uri = "/#{@bucket}/#{path}"
       date = Upyun::Util.current_date
       mime_type = `file -Ib #{file}`.gsub(/\n/,"").split(';')[0]
       file_size = file.nil? ? 0 : File.size(file) 
-      sign = Digest::MD5.hexdigest("PUT&#{path}&#{date}&#{file_size}&#{@signed_password}")
+      sign = Digest::MD5.hexdigest("PUT&#{uri}&#{date}&#{file_size}&#{@signed_password}")
 
       @connection.put do |req|
-        req.url path
+        req.url uri
         req.body = Faraday::UploadIO.new(file, mime_type)
         req.headers['Content-Type'] = mime_type
         req.headers['Content-Length'] = file_size.to_s
