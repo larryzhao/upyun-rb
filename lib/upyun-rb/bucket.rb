@@ -24,6 +24,7 @@ module Upyun
       @connection.put do |req|
         req.url uri
         req.body = Faraday::UploadIO.new(file, mime_type)
+        req.headers['Mkdir'] = 'true'
         req.headers['Content-Type'] = mime_type
         req.headers['Content-Length'] = file_size.to_s
         req.headers['Authorization'] = "UpYun #{@operator}:#{sign}"
