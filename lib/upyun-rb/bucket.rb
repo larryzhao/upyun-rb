@@ -49,7 +49,7 @@ module Upyun
     def delete(path)
       uri = "/#{@bucket}/#{path}"
       date = Upyun::Util.current_date
-      sign = Digest::MD5.hexdigest("HEAD&#{uri}&#{date}&0&#{@signed_password}")
+      sign = Digest::MD5.hexdigest("DELETE&#{uri}&#{date}&0&#{@signed_password}")
       
       @connection.delete do |req|
         req.url uri
