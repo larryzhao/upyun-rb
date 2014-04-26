@@ -1,15 +1,15 @@
 PATH
   remote: .
   specs:
-    upyun-rb (0.0.8)
+    upyun-rb (0.0.16)
       faraday
 
 GEM
   remote: http://rubygems.org/
   specs:
-    faraday (0.8.8)
-      multipart-post (~> 1.2.0)
-    multipart-post (1.2.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    multipart-post (2.0.0)
 
 PLATFORMS
   ruby

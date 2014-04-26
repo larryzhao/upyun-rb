@@ -45,5 +45,18 @@ module Upyun
         req.headers['Expect'] = ''
       end
     end
+
+    def delete(path)
+      uri = "/#{@bucket}/#{path}"
+      date = Upyun::Util.current_date
+      sign = Digest::MD5.hexdigest("HEAD&#{uri}&#{date}&0&#{@signed_password}")
+      
+      @connection.delete do |req|
+        req.url uri
+        req.headers['Authorization'] = "UpYun #{@operator}:#{sign}"
+        req.headers['Date'] = date
+        req.headers['Expect'] = ''
+      end
+    end
   end
 end
