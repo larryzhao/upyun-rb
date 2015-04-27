@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.description = ""
 
   s.required_rubygems_version = ">= 1.3.6"
+  s.add_dependency             "connection_pool"
   s.add_dependency             "faraday"
   s.add_development_dependency "bundler"
 
